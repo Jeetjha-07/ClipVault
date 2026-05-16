@@ -10,7 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
 if (!mongoUri) {
   console.error('Missing MongoDB connection string. Set MONGODB_URI in .env or environment variables.');
