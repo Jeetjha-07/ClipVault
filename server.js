@@ -54,7 +54,7 @@ client.connect()
   
 
 // Serve frontend static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'main')));
 
 // Multer memory storage (no disk files)
 const storage = multer.memoryStorage();
@@ -163,7 +163,7 @@ app.get('/api/file/:id', async (req, res) => {
 
 // Serve index.html for root
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'main/index.html'));
 });
 
 // Start server
