@@ -1,0 +1,72 @@
+name: ClipVault CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ClipValult
+
+    steps:
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node.js 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ClipValult/package-lock.json
+
+      # Install dependencies using clean install
+      - name: Install dependencies
+        run: npm ci
+
+      # Syntax validation for server.js
+      - name: Validate server.js syntax
+        run: node --check server.js
+
+      # Ensure frontend folder exists
+      - name: Check frontend files
+        run: |
+          if [ ! -d "main" ]; then
+            echo "ERROR: main/ frontend directory not found"
+            exit 1
+          fi
+
+          if [ ! -f "main/index.html" ]; then
+            echo "ERROR: main/index.html not found"
+            exit 1
+          fi
+
+      # Detect incorrect static serving path
+      - name: Detect static path mismatch
+        run: |
+          if grep -q "public" server.js; then
+            echo "WARNING: server.js may still reference public/"
+            echo "Consider updating Express static middleware to use main/"
+          fi
+
+      # Security audit (warning-only for now)
+      - name: Run npm audit
+        run: npm audit --audit-level=high || true
+
+      # Build Docker image
+      - name: Build Docker image
+        run: docker build -t clipvault-app .
+
+      # Validate Docker Compose syntax
+      - name: Validate Docker Compose
+        run: docker compose config
