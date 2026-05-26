@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'https://clipvalult.onrender.com';
+const API_BASE_URL = 'https://clipvault-latest.onrender.com';
 
 // Theme management functions
 function setTheme(isDark) {
