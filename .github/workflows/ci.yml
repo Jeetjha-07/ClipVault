@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/clipvault:latest .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/clipvault:latest .
 
       - name: Login to Dcoker Hub
         run: |
@@ -52,6 +52,6 @@ jobs:
       - name: Trigger Render Deploy
         run: |
           curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
-          
+
       - name: Validate Docker Compose
         run: docker compose config
