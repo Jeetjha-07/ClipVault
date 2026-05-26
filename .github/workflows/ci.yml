@@ -37,9 +37,9 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/clipvault:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/clipvault:latest .
 
-      - name: Login to Dcoker Hub
+      - name: Login to Docker Hub
         run: |
           echo "${{ secrets.DOCKER_PASSWORD }}" | docker login \
           -u "${{ secrets.DOCKER_USERNAME }}" \
