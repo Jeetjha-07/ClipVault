@@ -1,0 +1,23 @@
+[build]
+  # Build command (if needed)
+  command = "echo 'Frontend is static HTML/CSS/JS'"
+  publish = "main"
+  
+[[redirects]]
+  # Redirect all routes to index.html for SPA routing
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  # Production environment variables
+  [context.production.environment]
+    REACT_APP_API_URL = "https://clipvalult.onrender.com"
+
+[context.deploy-preview]
+  [context.deploy-preview.environment]
+    REACT_APP_API_URL = "https://clipvalult.onrender.com"
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    REACT_APP_API_URL = "https://clipvalult.onrender.com"

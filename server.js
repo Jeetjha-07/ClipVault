@@ -7,7 +7,33 @@ const { MongoClient, GridFSBucket, ObjectId } = require('mongodb');
 const { Readable } = require('stream');
 
 const app = express();
-app.use(cors());
+
+// CORS configuration - allow frontend from Netlify and other origins
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, curl requests)
+    if (!origin) return callback(null, true);
+    
+    // Allow Netlify domains and localhost for development
+    const allowedOrigins = [
+      'https://clipvalult.netlify.app',
+      'http://localhost:3000',
+      'http://localhost:5173',
+      'http://localhost:5174'
+    ];
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;

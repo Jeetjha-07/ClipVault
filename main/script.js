@@ -1,3 +1,6 @@
+// API Configuration
+const API_BASE_URL = 'https://clipvalult.onrender.com';
+
 // Theme management functions
 function setTheme(isDark) {
   const html = document.documentElement;
@@ -170,7 +173,7 @@ async function sendData() {
 
   try {
 
-    const response = await fetch('/api/send', {
+    const response = await fetch(`${API_BASE_URL}/api/send`, {
       method: 'POST',
       body: formData
     });
@@ -244,7 +247,7 @@ async function receiveData() {
   `;
 
   try {
-    const res = await fetch(`/api/receive/${code}`);
+    const res = await fetch(`${API_BASE_URL}/api/receive/${code}`);
     const data = await res.json();
 
     const textBlock = document.getElementById('textBlock');
@@ -270,7 +273,7 @@ async function receiveData() {
 
     if (data.files && data.files.length > 0) {
       fileLinks.innerHTML = data.files.map(file =>
-        `<a href="${file.url}" download class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
+        `<a href="${API_BASE_URL}${file.url}" download class="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
           <span class="text-lg">📄</span>
           <span>${file.filename}</span>
           <span class="text-xs text-gray-500 ml-auto">(Click to download)</span>

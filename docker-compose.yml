@@ -14,21 +14,3 @@ services:
       MONGODB_URI: ${MONGODB_URI:-mongodb://dummy-uri}
 
     restart: unless-stopped
-
-# Optional local MongoDB service
-# Uncomment if you want MongoDB locally instead of Atlas
-
-#  mongo:
-#    image: mongo:7
-#    container_name: clipvault-mongo
-#
-#    ports:
-#      - "27017:27017"
-#
-#    volumes:
-#      - mongodb_data:/data/db
-#
-#    restart: unless-stopped
-
-# volumes:
-#  mongodb_data:
