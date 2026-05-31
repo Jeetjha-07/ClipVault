@@ -382,3 +382,193 @@ body {
 .toast-show {
   animation: toastPop .35s ease forwards;
 }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.theme-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:active .theme-icon {
+  transform: rotate(20deg);
+}
+
+/* Light Mode Styles */
+html:not(.dark) {
+  color-scheme: light;
+}
+
+html:not(.dark) body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+html:not(.dark) .bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+html:not(.dark) .glow {
+  opacity: 0.08;
+}
+
+html:not(.dark) .glow-1 {
+  background: #60a5fa;
+}
+
+html:not(.dark) .glow-2 {
+  background: #a78bfa;
+}
+
+html:not(.dark) .card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+html:not(.dark) .card-head h2 {
+  color: #0f172a;
+}
+
+html:not(.dark) .card-head p {
+  color: #64748b;
+}
+
+html:not(.dark) .input {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #1e293b;
+}
+
+html:not(.dark) .input::placeholder {
+  color: #94a3b8;
+}
+
+html:not(.dark) .input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+html:not(.dark) .upload-inner {
+  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+html:not(.dark) .upload-inner:hover {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.03);
+}
+
+html:not(.dark) .upload-inner h3 {
+  color: #0f172a;
+}
+
+html:not(.dark) .upload-inner p {
+  color: #64748b;
+}
+
+html:not(.dark) .input-label {
+  color: #64748b;
+}
+
+html:not(.dark) .result-box {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html:not(.dark) .result-title {
+  color: #0f172a;
+}
+
+html:not(.dark) .received-text {
+  color: #1e293b;
+}
+
+html:not(.dark) .mini-btn {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1e293b;
+}
+
+html:not(.dark) .mini-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .loader {
+  border-color: rgba(0, 0, 0, 0.08);
+  border-top-color: #3b82f6;
+}
+
+html:not(.dark) .theme-toggle {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+html:not(.dark) .qr-card {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html:not(.dark) .qr-modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+html:not(.dark) .close-btn {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1e293b;
+}
+
+html:not(.dark) .close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .toast-inner {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(248, 250, 252, 0.92),
+      rgba(241, 245, 249, 0.92)
+    );
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html:not(.dark) .toast-title {
+  color: #0f172a;
+}
+
+html:not(.dark) .toast-message {
+  color: #64748b;
+}
+
+/* Smooth transitions between themes */
+html, body, .bg-grid, .glow, .card, .input, .upload-inner, .result-box,
+.mini-btn, .theme-toggle, .loader, .toast-inner, .qr-card {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

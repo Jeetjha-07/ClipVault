@@ -1,7 +1,5 @@
 node_modules
 npm-debug.log
-.env
-.env.*
 .git
 .github
 .gitignore
@@ -13,3 +11,4 @@ Thumbs.db
 .idea
 
 coverage
+waste

@@ -8,15 +8,16 @@ const { Readable } = require('stream');
 
 const app = express();
 
-// CORS configuration - allow frontend from Netlify and other origins
+// CORS configuration - allow frontend from specified origin
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (mobile apps, curl requests)
     if (!origin) return callback(null, true);
     
-    // Allow Netlify domains and localhost for development
+    // Get allowed frontend URL from environment variable (set this in Render)
+    const allowedFrontend = process.env.FRONTEND_URL || 'https://clipvaults.netlify.app';
     const allowedOrigins = [
-      'https://clipvaults.netlify.app',
+      allowedFrontend,
       'http://localhost:3000',
       'http://localhost:5173',
       'http://localhost:5174'

@@ -11,18 +11,13 @@ function setTheme(isDark) {
     html.classList.remove('dark');
     localStorage.setItem('theme', 'light');
   }
-  updateThemeButton(isDark);
+  updateThemeIcon(isDark);
 }
 
-function updateThemeButton(isDark) {
-  const themeIcon = document.getElementById('themeIcon');
-  const themeText = document.getElementById('themeText');
-  if (isDark) {
-    themeIcon.textContent = '☀️';
-    themeText.textContent = 'Light';
-  } else {
-    themeIcon.textContent = '🌙';
-    themeText.textContent = 'Dark';
+function updateThemeIcon(isDark) {
+  const themeIcon = document.querySelector('.theme-icon');
+  if (themeIcon) {
+    themeIcon.textContent = isDark ? '☀️' : '🌙';
   }
 }
 
