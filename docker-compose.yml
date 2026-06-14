@@ -11,6 +11,6 @@ services:
 
     environment:
       PORT: 3000
-      MONGODB_URI: ${MONGODB_URI:-mongodb://dummy-uri}
+      MONGODB_URI: ${MONGODB_URI:-mongodb://localhost:27017/clipvault}
 
     restart: unless-stopped
